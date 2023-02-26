@@ -1,6 +1,7 @@
 ﻿// 1_Калькулятор_двух_чисел.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
+
 #include <iostream>
 #include <cstdlib>
 #include <string>
@@ -59,34 +60,32 @@ double Calculator::divide_2_1() {
     DIV2 = num2 / num1;
     return DIV2;
 }
-//bool set_num1(double num1) - метод должен установить значение поля this->num1 = num1 в случае, если значение num1 != 0. Возвращает true, если установка произошла успешно, в обратном случае false
+//bool set_num1(double num1) - метод должен установить значение поля num1 равное значению аргумента num1 в случае, если значение аргумента не равно 0. Возвращает true, если установка произошла успешно, в обратном случае false
+//bool set_num2(double num2) - метод должен установить значение поля num2 равное значению аргумента num2 в случае, если значение аргумента не равно 0. Возвращает true, если установка произошла успешно, в обратном случае false
 bool Calculator::set_num1(double num1) {
-
-    if ((this->num1 = num1) && (num1 != 0))
+    this->num1 = num1;
+    if (num1 != 0)
     {
-        std::cout << "Введите num1:";
+        return true;
 
     }
     else {
-        std::cout << "Неверный ввод!" << std::endl;
-        std::cout << "Введите num1:";
+        return false;
     }
-
-    return num1;
 }
 
-
-//bool set_num2(double num2) - метод должен установить значение поля num2 равное значению аргумента num2 в случае, если значение аргумента не равно 0. Возвращает true, если установка произошла успешно, в обратном случае false*
+///////////////////////////////////////////////////////
 bool Calculator::set_num2(double num2) {
 
-    if (this->num2 != 0)
+    this->num2 = num2;
+    if (num2 != 0)
     {
-        std::cout << "Введите num2:";
+        return true;
+
     }
     else {
-        std::cout << "Неверный ввод!" << std::endl;
+        return false;
     }
-    return num2;
 }
 
 void Calculator::SHOWALL()
@@ -103,29 +102,37 @@ void Calculator::SHOWALL()
 //главная функция
 int main() {
     setlocale(LC_ALL, "RU");
-
     //создание объекта
     Calculator number;
     //присваивание значений полям
 
     //вызов метода
-    std::cout << "Введите num1:";
     double c;
+    std::cout << "Введите num1:";
     std::cin >> c;
-    number.num1 = { c };
-
+    while (number.set_num1(c) == false) {
+        std::cout << "Неверный ввод!" << std::endl;
+        std::cout << "Введите num1:";
+        std::cin >> c;
+    }
 
     std::cout << "Введите num2:";
     double z;
     std::cin >> z;
+    while (number.set_num2(z) == false) {
+        std::cout << "Неверный ввод!" << std::endl;
+        std::cout << "Введите num2:";
+        std::cin >> z;
+    }
+
+    number.num1 = { c };
     number.num2 = { z };
-
-
-
 
     number.SHOWALL();
 
     return 0;
+
+}
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
