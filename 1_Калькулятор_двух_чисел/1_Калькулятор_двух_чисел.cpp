@@ -7,12 +7,12 @@
 #include <string>
 //описание класса
 class Calculator {
-public:
+private:
     //поля
     double num1;
     double num2;
     //методы.метод-аналог функции
-
+public:
     double add();
     double multiply();
     double subtract_1_2();
@@ -63,8 +63,8 @@ double Calculator::divide_2_1() {
 //bool set_num1(double num1) - метод должен установить значение поля num1 равное значению аргумента num1 в случае, если значение аргумента не равно 0. Возвращает true, если установка произошла успешно, в обратном случае false
 //bool set_num2(double num2) - метод должен установить значение поля num2 равное значению аргумента num2 в случае, если значение аргумента не равно 0. Возвращает true, если установка произошла успешно, в обратном случае false
 bool Calculator::set_num1(double num1) {
-    this->num1 = num1;
-    if (num1 != 0)
+    
+    if ((this->num1 = num1) != 0)
     {
         return true;
 
@@ -77,8 +77,8 @@ bool Calculator::set_num1(double num1) {
 ///////////////////////////////////////////////////////
 bool Calculator::set_num2(double num2) {
 
-    this->num2 = num2;
-    if (num2 != 0)
+    
+    if ((this->num2 = num2)!= 0)
     {
         return true;
 
@@ -125,8 +125,7 @@ int main() {
         std::cin >> z;
     }
 
-    number.num1 = { c };
-    number.num2 = { z };
+ 
 
     number.SHOWALL();
 
